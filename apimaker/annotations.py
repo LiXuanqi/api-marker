@@ -1,7 +1,7 @@
 import functools
 
 
-def api(method, path, desc, params={}, body={}, response={}):
+def api(method, path, desc, params={}, responses={}):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
@@ -11,11 +11,8 @@ def api(method, path, desc, params={}, body={}, response={}):
             # - params
             for k, v in params.items():
                 print("%s: %s" % (k, v))
-            # - body
-            for k, v in body.items():
-                print("%s: %s" % (k, v))
             # - response
-            for k, v in response.items():
+            for k, v in responses.items():
                 print("%s: %s" % (k, v))
             return func(*args, **kwargs)
         return wrapper

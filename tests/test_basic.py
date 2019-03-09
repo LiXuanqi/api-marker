@@ -6,14 +6,12 @@ from .context import apimaker
     path='/courses',
     desc='api to get all courses',
     params={
-        'param1': 'number, required',
-        'param2': 'string, required'
+        'param1': 'number, required, body',
+        'param2': 'string, required, header',
+        'param3': 'string, required, form',
+        'param5': 'string, required, query'
     },
-    body={
-        'body1': 'number, required',
-        'body2': 'string, required'
-    },
-    response={
+    responses={
         'response1': 'number',
         'response2': 'string'
     }
@@ -22,4 +20,4 @@ def getCourses():
     print('return all courses')
 
 getCourses()
-
+print(apimaker.core.ApiSpec.basePath)
